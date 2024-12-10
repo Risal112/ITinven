@@ -14,10 +14,7 @@ export default function HomeScreen() {
 
   // Fungsi untuk logout
   const logout = () => {
-<<<<<<< HEAD
-=======
     // Implementasikan logika logout di sini (misalnya redirect atau clear session)
->>>>>>> 4489895 (sellesaii)
     alert('You have logged out!');
     // Contoh: navigation.navigate('Login');
   };
@@ -35,7 +32,7 @@ export default function HomeScreen() {
 
       {/* Red Container Section */}
       <View style={styles.infoContainer}>
-        <Text style={styles.infoTitle}>PEMINJAMAN, CEK STATUS BARANG?</Text>
+        <Text style={styles.infoTitle}>PEMINJAMAN, PENGEMBALIAN, CEK STATUS BARANG?</Text>
         <Text style={styles.infoText}>
           Gampang kok sisa buka menu, isi sesuai, klik proses
           jika data berhasil didaftarkan...
@@ -48,20 +45,14 @@ export default function HomeScreen() {
           style={styles.menuItem} 
           onPress={() => navigation.navigate('Peminjaman')} // Navigasi ke Peminjaman saat di klik
         >
-          <FontAwesome name="book" size={24} color="brown" />
+          <FontAwesome name="book" size={24} color="brown" /> {/* Ganti ikon Peminjaman */}
           <Text style={styles.menuText}>PEMINJAMAN</Text>
         </TouchableOpacity>
-<<<<<<< HEAD
-        
-        <TouchableOpacity style={styles.menuItem} 
-          onPress={() => navigation.navigate('data')}> 
-=======
 
         <TouchableOpacity style={styles.menuItem} 
           onPress={() => navigation.navigate('History')}> 
->>>>>>> 4489895 (sellesaii)
           <FontAwesome name="list-alt" size={24} color="brown" /> 
-          <Text style={styles.menuText}>DATA PEMINJAMAN</Text>
+          <Text style={styles.menuText}>DATA PEMINJAMAN&PENGEMBALIAN</Text>
         </TouchableOpacity>
       </ScrollView>
 
@@ -87,11 +78,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#0070B8',
   },
   darkTheme: {
-<<<<<<< HEAD
-    backgroundColor: '#333',
-=======
     backgroundColor: '#333', // Dark mode background
->>>>>>> 4489895 (sellesaii)
   },
   header: {
     flexDirection: 'row',
@@ -150,11 +137,7 @@ const styles = StyleSheet.create({
   },
   bottomNav: {
     flexDirection: 'row',
-<<<<<<< HEAD
-    justifyContent: 'space-evenly',
-=======
     justifyContent: 'space-evenly', // Spread items evenly across the row
->>>>>>> 4489895 (sellesaii)
     backgroundColor: '#f0f0f0',
     paddingVertical: 10,
     borderTopWidth: 1,

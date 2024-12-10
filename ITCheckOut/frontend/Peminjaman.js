@@ -3,11 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput, Image,
 import { FontAwesome, MaterialIcons, Entypo } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
-<<<<<<< HEAD
-import AsyncStorage from '@react-native-async-storage/async-storage';
-=======
 import { Calendar } from 'react-native-calendars';
->>>>>>> 4489895 (sellesaii)
 
 export default function Peminjaman() {
   const [name, setName] = useState('');
@@ -56,24 +52,6 @@ export default function Peminjaman() {
       return;
     }
 
-<<<<<<< HEAD
-    const peminjamanData = {
-      name,
-      alat,
-      date,
-      petugas,
-      photo
-    };
-
-    try {
-      const existingData = await AsyncStorage.getItem('historyData');
-      const newHistory = existingData ? JSON.parse(existingData) : [];
-      newHistory.push(peminjamanData);
-      await AsyncStorage.setItem('historyData', JSON.stringify(newHistory));
-
-      Alert.alert('Sukses', 'Data peminjaman berhasil diajukan.');
-      navigation.navigate('data');
-=======
     const formData = new FormData();
     formData.append('name', name);
     formData.append('alat', alat);
@@ -100,7 +78,6 @@ export default function Peminjaman() {
       } else {
         Alert.alert('Error', result.message || 'Gagal menyimpan data peminjaman.');
       }
->>>>>>> 4489895 (sellesaii)
     } catch (error) {
       Alert.alert('Error', 'Gagal menyimpan data peminjaman.');
       console.error(error);
@@ -129,12 +106,8 @@ export default function Peminjaman() {
           />
         </View>
 
-<<<<<<< HEAD
-          <View style={[styles.inputContainer, errors.alat && styles.errorInput]}>
-=======
         {/* Alat Input */}
         <View style={[styles.inputContainer, errors.alat && styles.errorInput]}>
->>>>>>> 4489895 (sellesaii)
             <Entypo name="tools" size={24} color="brown" />
             <TextInput
               style={[styles.input, { height: 120 }]} // Menyesuaikan tinggi
@@ -146,11 +119,7 @@ export default function Peminjaman() {
             />
           </View>
 
-<<<<<<< HEAD
-        
-=======
         {/* Date Picker */}
->>>>>>> 4489895 (sellesaii)
         <View style={styles.inputContainer}>
           <FontAwesome name="calendar" size={24} color="brown" />
           <input
@@ -274,7 +243,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     marginHorizontal: 12,
     marginVertical: 6,
-<<<<<<< HEAD
     borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -282,66 +250,4 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 4,
   },
-  input: {
-    marginLeft: 12,
-    fontSize: 16,
-    color: '#333',
-    flex: 1,
-  },
-  errorInput: {
-    borderColor: 'red',
-    borderWidth: 1,
-  },
-  errorMessage: {
-    color: 'red',
-    marginLeft: 20,
-    marginTop: -5,
-    marginBottom: 10,
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginHorizontal: 12,
-  },
-  dateInput: {
-    fontSize: 16,
-    color: '#333',
-    flex: 1,
-    marginLeft: 12,
-  },
-  menuItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 12,
-    backgroundColor: '#fff',
-    marginHorizontal: 12,
-    marginVertical: 6,
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    elevation: 4,
-    paddingLeft: 16,
-  },
-  photoContainer: {
-    marginHorizontal: 12,
-    marginTop: 10,
-  },
-  image: {
-    width: 100,
-    height: 100,
-=======
->>>>>>> 4489895 (sellesaii)
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    elevation: 4,
-  },
-  alatInput: {
-    height: 100,  // Memperbesar tinggi input alat
-  },
-
 });
