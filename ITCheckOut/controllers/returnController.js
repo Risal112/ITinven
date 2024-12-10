@@ -1,30 +1,29 @@
-const Peminjaman = require('../models/return');
+const Peminjaman = require('../models/Peminjaman');
 
-exports.processReturn = async (req, res) => {
-    try {
-        const { peminjamanId } = req.body;
+// Proses pengembalian alat
+exports.returnItem = async (req, res) => {
+  const { returnId } = req.body;
 
-        if (!peminjamanId) {
-            return res.status(400).json({ message: 'ID peminjaman wajib diisi.' });
-        }
+  if (!returnId) {
+    return res.status(400).json({ message: 'ID pengembalian wajib diisi.' });
+  }
 
-        const peminjaman = await Peminjaman.findById(peminjamanId);
-
-        if (!peminjaman) {
-            return res.status(404).json({ message: 'Data peminjaman tidak ditemukan.' });
-        }
-
-        if (peminjaman.isReturned) {
-            return res.status(400).json({ message: 'Barang sudah dikembalikan.' });
-        }
-
-        peminjaman.isReturned = true;
-        peminjaman.returnedAt = new Date();
-        await peminjaman.save();
-
-        res.status(200).json({ message: 'Barang berhasil dikembalikan.', data: peminjaman });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Terjadi kesalahan server.' });
+  try {
+    const item = await Peminjaman.findById(returnId);
+    if (!item) {
+      return res.status(404).json({ message: 'Data peminjaman tidak ditemukan.' });
     }
+
+    if (item.status === 'Sudah Dikembalikan') {
+      return res.status(400).json({ message: 'Item sudah dikembalikan.' });
+    }
+
+    // Perbarui status menjadi 'Sudah Dikembalikan'
+    item.status = 'Sudah Dikembalikan';
+    await item.save();
+
+    res.status(200).json({ message: 'Item berhasil dikembalikan.', item });
+  } catch (error) {
+    res.status(500).json({ message: 'Terjadi kesalahan saat memproses pengembalian.', error: error.message });
+  }
 };

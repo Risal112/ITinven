@@ -31,7 +31,7 @@ const Login = ({ navigation }) => {
         const storedToken = await AsyncStorage.getItem('token'); // Debugging log
         console.log('Stored token:', storedToken);
 
-        alert(result.message);
+       
         navigation.navigate('Home');
       } else {
         alert(result.message || 'Gagal login.');

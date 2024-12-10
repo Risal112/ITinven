@@ -6,14 +6,21 @@ const authRoutes = require('./routes/authRoutes');
 const returnRoutes = require('./routes/returnRoutes'); // Import rute pengembalian
 const authenticate = require('./config/auth'); // Middleware autentikasi
 const path = require('path'); // Untuk menyajikan file statis
-const historyRoutes = require('./routes/historyRoutes');
 const cors = require('cors'); // Tambahkan ini
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Koneksi ke MongoDB
-connectDB();
+const mongoURI = process.env.MONGO_URI;
+
+// Menghubungkan ke MongoDB
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('MongoDB Terhubung'))
+  .catch(err => console.log('Error koneksi MongoDB:', err));
 
 // Middleware untuk parsing JSON dan URL-encoded
 app.use(express.json());
@@ -56,8 +63,7 @@ app.use('/api/peminjaman', peminjamanRoutes);
 // Rute pengembalian
 app.use('/api/return', returnRoutes); // Tambahkan rute pengembalian
 
-// Rute riwayat peminjaman
-app.use('/api/history', historyRoutes);
+
 
 // Penanganan rute yang tidak ditemukan
 app.use((req, res) => {

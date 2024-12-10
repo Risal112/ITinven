@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 
-// Skema peminjaman
 const peminjamanSchema = new mongoose.Schema({
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    item: { type: String, required: true },
-    borrowedAt: { type: Date, default: Date.now },
-    returnedAt: { type: Date }, // Tanggal pengembalian
-    isReturned: { type: Boolean, default: false }, // Status pengembalian
+  name: { type: String, required: true },
+  alat: { type: String, required: true },
+  date: { type: Date, required: true },
+  petugas: { type: String, required: true },
+  photo: { type: String, required: false },  // URL atau path ke foto
+  status: { type: String, default: 'Belum Dikembalikan' } // Status default
 });
 
-// Cek apakah model sudah ada sebelum mendefinisikannya
-module.exports = mongoose.models.Peminjaman || mongoose.model('Peminjaman', peminjamanSchema);
+const Peminjaman = mongoose.model('Peminjaman', peminjamanSchema);
+
+module.exports = Peminjaman;

@@ -1,30 +1,34 @@
-// middleware/upload.js
 const multer = require('multer');
 const path = require('path');
 
-// Menyiapkan konfigurasi storage untuk multer
+// Konfigurasi penyimpanan
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/');
+    cb(null, 'uploads/'); // Folder tujuan (uploads/)
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Menambahkan timestamp agar nama file unik
-  }
+    const uniqueName = Date.now() + '-' + Math.round(Math.random() * 1e9) + path.extname(file.originalname);
+    cb(null, uniqueName); // Nama file unik
+  },
 });
 
+// Filter file
 const fileFilter = (req, file, cb) => {
-  const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg']; // Hanya menerima tipe file ini
+  const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    cb(new Error('Hanya file dengan ekstensi .jpeg, .jpg dan .png yang diperbolehkan!'), false);
+    cb(new Error('Hanya file gambar (jpeg, jpg, png) yang diperbolehkan'), false);
   }
 };
 
-// Konfigurasi multer
+// Inisialisasi multer
 const upload = multer({
   storage: storage,
   fileFilter: fileFilter,
+  limits: {
+    fileSize: 5 * 1024 * 1024, // Maksimum ukuran file 5MB
+  },
 });
 
 module.exports = upload;

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { processReturn } = require('../controllers/returnController');
+const { returnItem } = require('../controllers/returnController');
 
-// Endpoint untuk pengembalian
-router.post('/return', processReturn);
+// Rute untuk proses pengembalian alat
+router.post('/return', returnItem);
 
 module.exports = router;
