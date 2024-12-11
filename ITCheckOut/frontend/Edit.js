@@ -15,7 +15,7 @@ export default function Edit({ navigation, route }) {
         body: JSON.stringify({ name, alat, petugas }),
       });
       const data = await response.json();
-  
+
       if (response.ok) {
         Alert.alert('Sukses', 'Data berhasil diperbarui.');
         navigation.goBack();
@@ -27,23 +27,36 @@ export default function Edit({ navigation, route }) {
       Alert.alert('Kesalahan', 'Tidak dapat memperbarui data.');
     }
   };
-  
-    
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Nama Peminjam</Text>
-      <TextInput style={styles.input} value={name} onChangeText={setName} />
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Nama Peminjam</Text>
+        <TextInput style={styles.input} value={name} onChangeText={setName} />
 
-      <Text style={styles.label}>Nama Alat</Text>
-      <TextInput style={styles.input} value={alat} onChangeText={setAlat} />
+        <Text style={styles.label}>Nama Alat</Text>
+        <TextInput
+              style={[styles.input, { height: 120 }]} // Menyesuaikan tinggi
+              placeholder="Nama Alat"
+              value={alat}
+              onChangeText={text => setAlat(text)}
+              multiline={true}  // Mengaktifkan multiline
+              textAlignVertical="top" // Memastikan teks berada di atas
+            />
+        <Text style={styles.label}>Nama Petugas</Text>
+        <TextInput style={styles.input} value={petugas} onChangeText={setPetugas} />
+      </View>
 
-      <Text style={styles.label}>Nama Petugas</Text>
-      <TextInput style={styles.input} value={petugas} onChangeText={setPetugas} />
+      {/* Tombol Kembali dan Perbarui dalam satu baris */}
+      <View style={styles.buttonRow}>
+        <TouchableOpacity style={[styles.button, styles.backButton]} onPress={() => navigation.goBack()}>
+          <Text style={styles.buttonText}>Kembali</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={handleUpdate}>
-        <Text style={styles.buttonText}>Perbarui</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={[styles.button, styles.updateButton]} onPress={handleUpdate}>
+          <Text style={styles.buttonText}>Perbarui</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -53,6 +66,10 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: '#fff',
+  },
+  inputContainer: {
+    marginTop: 20, // Pindahkan semua input lebih ke atas
+    flex: 1,
   },
   label: {
     fontSize: 16,
@@ -66,12 +83,27 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 5,
   },
+  inputLarge: {
+    height: 100, // Memperbesar tinggi input untuk Nama Alat
+    textAlignVertical: 'top', // Menjaga teks tetap mulai dari atas
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10,
+  },
   button: {
-    backgroundColor: '#28a745',
+    flex: 1,
     padding: 15,
     borderRadius: 5,
-    marginTop: 20,
     alignItems: 'center',
+    marginHorizontal: 5,
+  },
+  backButton: {
+    backgroundColor: '#007bff',
+  },
+  updateButton: {
+    backgroundColor: '#28a745',
   },
   buttonText: {
     color: '#fff',

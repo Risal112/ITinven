@@ -14,9 +14,8 @@ export default function HomeScreen() {
 
   // Fungsi untuk logout
   const logout = () => {
-    // Implementasikan logika logout di sini (misalnya redirect atau clear session)
-    alert('You have logged out!');
-    // Contoh: navigation.navigate('Login');
+    // Tambahkan logika logout jika perlu, seperti menghapus token autentikasi
+    navigation.navigate('Login'); // Navigasi ke halaman Login
   };
 
   return (
@@ -58,9 +57,6 @@ export default function HomeScreen() {
 
       {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-          <FontAwesome name="home" size={24} color="black" />
-        </TouchableOpacity>
         <TouchableOpacity onPress={toggleTheme}>
           <MaterialIcons name={isDarkTheme ? "wb-sunny" : "nights-stay"} size={24} color="black" />
         </TouchableOpacity>
@@ -84,21 +80,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#001F3F',
+    backgroundColor: '#fff',
   },
   logo: {
-    width: 50,
-    height: 50,
-    marginRight: 16,
+    width:75,
+    height:50,
+    
   },
   title: {
-    fontSize: 18,
-    color: '#fff',
+    fontSize: 16,
+    color: 'blak',
     fontWeight: 'bold',
   },
   subtitle: {
-    fontSize: 12,
-    color: '#ddd',
+    fontSize: 10,
+    color: 'blak',
   },
   infoContainer: {
     backgroundColor: '#001F3F',
