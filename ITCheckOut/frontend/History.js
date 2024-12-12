@@ -218,8 +218,9 @@ const styles = StyleSheet.create({
   printButton: {
     paddingVertical: 5,
     paddingHorizontal: 10,
-    backgroundColor: '#6c757d',
+    backgroundColor: '#28a745',
     borderRadius: 5,
+
   },
   printButtonText: {
     color: '#fff',

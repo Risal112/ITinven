@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   logo: {
-    width:75,
+    width:80,
     height:50,
     
   },
@@ -91,10 +91,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'blak',
     fontWeight: 'bold',
+    marginLeft: 15, 
   },
   subtitle: {
     fontSize: 10,
     color: 'blak',
+    marginLeft: 15, 
   },
   infoContainer: {
     backgroundColor: '#001F3F',

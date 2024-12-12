@@ -10,6 +10,7 @@ import DetailHistory from './frontend/DetailHistory';
 import Edit from './frontend/Edit';
 
 
+
 const Stack = createNativeStackNavigator();
 
 
