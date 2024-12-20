@@ -66,7 +66,7 @@ export default function Peminjaman() {
     }
 
     try {
-      const response = await fetch('https://redesigned-spoon-r4ggj6xwgp453w5r4-3000.app.github.dev/api/peminjaman', {
+      const response = await fetch('https://scaling-umbrella-7v99g5xw947wcpxw5-3000.app.github.dev/api/peminjaman', {
         method: 'POST',
         body: formData,
       });

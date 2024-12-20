@@ -15,7 +15,7 @@ export default function History({ navigation }) {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await fetch('https://redesigned-spoon-r4ggj6xwgp453w5r4-3000.app.github.dev/api/peminjaman');
+      const response = await fetch('https://scaling-umbrella-7v99g5xw947wcpxw5-3000.app.github.dev/api/peminjaman');
       const data = await response.json();
       const updatedData = data.map((item) => ({
         ...item,
@@ -47,7 +47,7 @@ export default function History({ navigation }) {
     if (processing) return;
     setProcessing(true);
     try {
-      const response = await fetch('https://redesigned-spoon-r4ggj6xwgp453w5r4-3000.app.github.dev/api/return/return', {
+      const response = await fetch('https://scaling-umbrella-7v99g5xw947wcpxw5-3000.app.github.dev/api/return/return', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ returnId: itemId }),
